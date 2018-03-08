@@ -10,16 +10,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+    @IBOutlet weak var quoteTextLbl: UILabel!
+    @IBOutlet weak var authorImage: UIImageView!
+    @IBOutlet weak var authorLbl: UILabel!
+    
+    let quote = ["What is the name of the spaceship first landed on the moon?",
+                 "What does 'umbros' mean in Latin? Translate it into Sentinelese.",
+                 "What’s the first photo printed from a camera in the world?",
+                 "When was the first email ever sent in the world?"
+    ]
+    
+    let authors = ["Steve Jobs" , "Brendon Burchard", "Teodor Rusvelt", "Free people"
+    ]
+    
+    let images = ["jobs", "brendon-burchard", "jobs", "brendon-burchard"]
+    
+    @IBAction func inspireMe(_ sender: Any) {
+        
+        let randomNumber = Int(arc4random()) % 4
+        let newQuote = quote[randomNumber]
+        let newAuthor = authors[randomNumber]
+        let authorImages = images[randomNumber]
+        quoteTextLbl.text = newQuote
+        authorLbl.text = newAuthor
+        authorImage.image = UIImage(named: authorImages)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
